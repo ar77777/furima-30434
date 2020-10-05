@@ -23,12 +23,12 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | name             | string     | null: false                    |
-| category_id      | integer    | null: false, foreign_key: true |
+| category_id      | integer    | null: false                    |
 | description      | text       | null: false                    |
-| condition_id     | integer    | null: false, foreign_key: true |
-| buyer_burden_id  | integer    | null: false, foreign_key: true |
-| prefecture_id    | integer    | null: false, foreign_key: true |
-| delivery_time_id | integer    | null: false, foreign_key: true |
+| condition_id     | integer    | null: false                    |
+| buyer_burden_id  | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| delivery_time_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
@@ -55,12 +55,12 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal        | string     | null: false                    |
-| prefecture_id | integer    | null: false, foreign_key: true |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block         | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| purchase      | references | null: false, foreign_key: true |
+| purchase      | references | null: false                    |
 
 ### Association
 
