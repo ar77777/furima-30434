@@ -35,12 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchases
-- belongs_to :category
-- belongs_to :condition
-- belongs_to :buyer_burden
-- belongs_to :prefecture
-- belongs_to :delivery_time
+- has_one :purchase
 
 ## purchasesテーブル
 
@@ -70,55 +65,3 @@
 ### Association
 
 - belongs_to :purchase
-- belongs_to :prefecture
-
-## category(Active_hash)
-
-| Column   | Type   | Options     |
-| -------- | -------| ----------- |
-| category | string | null: false |
-
-### Association
-
-- has_many:items
-
-## condition(Active_hash)
-
-| Column    | Type   | Options     |
-| --------- | -------| ----------- |
-| condition | string | null: false |
-
-### Association
-
-- has_many:items
-
-## buyer_burden(Active_hash)
-
-| Column       | Type   | Options     |
-| ------------ | -------| ----------- |
-| buyer_burden | string | null: false |
-
-### Association
-
-- has_many:items
-
-## prefecture(Active_hash)
-
-| Column     | Type   | Options     |
-| ---------- | -------| ----------- |
-| prefecture | string | null: false |
-
-### Association
-
-- has_many:items
-- has_many:addresses
-
-## delivery_time(Active_hash)
-
-| Column        | Type   | Options     |
-| ------------- | -------| ----------- |
-| delivery_time | string | null: false |
-
-### Association
-
-- has_many:items
