@@ -64,9 +64,7 @@ describe User do
         @user.password = "11111"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password",
-          "Password is too short (minimum is 6 characters)",
-          "Password is too short (minimum is 6 characters)",
-          "Password is invalid")
+          "Password is too short (minimum is 6 characters)","Password is invalid")
       end
       it "passwordが半角英字のみであれば登録できない" do
         @user.password = "aaaaaa"
