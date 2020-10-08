@@ -130,30 +130,5 @@ describe User do
         expect(@user.errors.full_messages).to include("First name kana is invalid")
       end
     end
-
-    context 'ログインできる時' do
-      it "email,passwordが存在する時" do
-        expect(@user).to be_valid
-      end
-    end
-
-    context 'ログインできない時' do
-      it "emailが空であれば登録できない" do
-        @user.email = ""
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
-      end
-      it "emailに@がなければ登録できない" do
-        @user.email = "aaaa1"
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
-      end
-      it "passwordが空では登録できない" do
-        @user.password = ""
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank", "Password is too short (minimum is 6 characters)", 
-        "Password is invalid", "Password confirmation doesn't match Password")
-      end
-    end
   end
 end
