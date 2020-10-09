@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   # Validation
-  validates :name, :description,:image, presence: true
+  validates :name, :description, :image, presence: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 300, less_than: 10_000_000 }
   PRICE_REGEX = /\A[0-9]+\z/.freeze
   validates_format_of :price, with: PRICE_REGEX
