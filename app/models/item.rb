@@ -1,4 +1,8 @@
 class Item < ApplicationRecord
+  #Association
+  belongs_to :user
+
+  #Validation
   validates :name, :description, :category_id, :condition_id, :buyer_burden_id, :prefecture_id, :delivery_time_id, :image, presence: true
   validates :price, presence: true, numericality: {only_integer: true, greater_than: 300, less_than: 10000000}
   PRICE_REGEX = /\A[0-9]+\z/.freeze
