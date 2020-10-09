@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 
   def identification
     item = Item.find(params[:id])
-    unless item == current_user.id
+    if item.user.id != current_user.id
       redirect_to root_path
     end
   end
