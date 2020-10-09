@@ -25,27 +25,52 @@ RSpec.describe Item, type: :model do
       it 'category_idが存在しない場合保存できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
+        expect(@item.errors.full_messages).to include('Category is not a number')
+      end
+      it 'category_idの値が1の場合場合保存できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it 'condition_idが存在しない場合保存できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank", 'Condition is not a number')
+        expect(@item.errors.full_messages).to include('Condition is not a number')
+      end
+      it 'condition_idの値が1の場合場合保存できない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition must be other than 1")
       end
       it 'buyer_burden_idが存在しない場合保存できない' do
         @item.buyer_burden_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Buyer burden can't be blank")
+        expect(@item.errors.full_messages).to include("Buyer burden is not a number")
+      end
+      it 'buyer_burden_idの値が1の場合場合保存できない' do
+        @item.buyer_burden_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Buyer burden must be other than 1")
       end
       it 'prefecture_idが存在しない場合保存できない' do
         @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture is not a number")
+      end
+      it 'prefecture_idの値が1の場合場合保存できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it 'delivery_time_idが存在しない場合保存できない' do
         @item.delivery_time_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery time can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery time is not a number")
+      end
+      it 'delivery_time_idの値が1の場合場合保存できない' do
+        @item.delivery_time_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
       end
       it 'priceが存在しない場合保存できない' do
         @item.price = ''
