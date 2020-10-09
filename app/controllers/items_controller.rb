@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: :edit
   before_action :identification, only: :edit
-  before_action :login_confirmation, only: :edit
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -44,13 +44,8 @@ class ItemsController < ApplicationController
 
   def identification
     item = Item.find(params[:id])
-    unless item.user.id == current_user.id
-      redirect_to action: :index 
-  end
-
-  def login_confirmation
-    item = Item.find(params[:id])
-    unless user_signed_in?
-      redirect_to action: :index
+    unless item == current_user.id
+      redirect_to root_path
+    end
   end
 end
