@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :edit
-  before_action :identification, only: :edit
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :identification, only: :edit
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -45,7 +45,6 @@ class ItemsController < ApplicationController
   end
 
   def identification
-    item = Item.find(params[:id])
     if item.user.id != current_user.id
       redirect_to root_path
     end
