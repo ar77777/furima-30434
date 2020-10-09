@@ -44,15 +44,11 @@ class ItemsController < ApplicationController
 
   def identification
     item = Item.find(params[:id])
-    unless item.user.id == current_user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless item.user.id == current_user.id
   end
 
   def login_confirmation
     item = Item.find(params[:id])
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
 end
