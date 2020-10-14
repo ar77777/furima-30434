@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # Association
   has_many :items
+  has_many :purchases
 
   # Validation新規登録/ユーザー情報
   validates :nickname, presence: true
