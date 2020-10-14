@@ -1,4 +1,8 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!,  only: :index
+  before_action :identification, only: :index
+  before_action :sale_check, only: :index
+  
   def index
     @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
@@ -17,6 +21,7 @@ class PurchasesController < ApplicationController
   end
 
   private
+
   def purchase_params
     params.require(:purchase_address).permit(:postal, :prefecture_id, :city, :block, :building_name, :phone_number, :token).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
@@ -29,5 +34,20 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],
       currency: 'jpy'
     )
+  end
+
+  # 　アクセス制限
+  def identification
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user.id
+      redirect_to root_path
+    end
+  end
+
+  def sale_check
+    @item = Item.find(params[:item_id])
+    if @item.purchase.item_id == @item.id
+      redirect_to root_path
+    end
   end
 end
