@@ -40,6 +40,12 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank", 'Phone number is invalid')
       end
+      it 'phone_numberにハイフンがある場合保存できない' do
+        @purchase_address.phone_number = '000-0000-0000'
+        @purchase_address.valid?
+        binding.pry
+        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+      end
       it 'tokenが存在しない場合保存できない' do
         @purchase_address.token = nil
         @purchase_address.valid?
