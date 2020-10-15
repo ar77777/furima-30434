@@ -18,12 +18,12 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'postalが存在しない場合保存できない' do
         @purchase_address.postal = nil
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal can't be blank", "Postal is invalid")
+        expect(@purchase_address.errors.full_messages).to include("Postal can't be blank", 'Postal is invalid')
       end
       it 'prefecture_idが存在しない場合保存できない' do
         @purchase_address.prefecture_id = nil
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank", "Prefecture is not a number")
+        expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
       end
       it 'cityが存在しない場合保存できない' do
         @purchase_address.city = nil
@@ -38,7 +38,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが存在しない場合保存できない' do
         @purchase_address.phone_number = nil
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
+        expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank", 'Phone number is invalid')
       end
       it 'tokenが存在しない場合保存できない' do
         @purchase_address.token = nil
