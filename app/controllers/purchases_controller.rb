@@ -46,7 +46,7 @@ class PurchasesController < ApplicationController
 
   def sale_check
     @item = Item.find(params[:item_id])
-    if @item.purchase.item_id == @item.id
+    if @item.purchase != nil && @item.id == @item.purchase.item_id
       redirect_to root_path
     end
   end
