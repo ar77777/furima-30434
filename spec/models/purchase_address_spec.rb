@@ -12,6 +12,10 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'postal,prefecture_id,city,block,phone_number,tokenが存在すれば購入できる' do
         expect(@purchase_address).to be_valid
       end
+      it 'building_nameが存在しない場合でも購入できる' do
+        @purchase_address.building_name = nil
+        expect(@purchase_address).to be_valid
+      end
     end
 
     context '出品の購入ができない場合' do
@@ -24,6 +28,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.prefecture_id = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
+      end
+      it 'prefecture_idがid1の場合保存できない' do
+        @purchase_address.prefecture_id = 1
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it 'cityが存在しない場合保存できない' do
         @purchase_address.city = nil
@@ -43,7 +52,6 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberにハイフンがある場合保存できない' do
         @purchase_address.phone_number = '000-0000-0000'
         @purchase_address.valid?
-        binding.pry
         expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
       end
       it 'tokenが存在しない場合保存できない' do

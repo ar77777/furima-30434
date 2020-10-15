@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :purchase_address do
     postal { '111-1111' }
-    prefecture_id  { '2' }
+    prefecture_id  { 2 }
     city           { '福岡市' }
     block          { '福岡1-1-1' }
     phone_number   { '00000000000' }
